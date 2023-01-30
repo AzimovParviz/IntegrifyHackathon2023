@@ -3,7 +3,6 @@ import { userRole } from "../types";
 
 export type UserDocument = Document & {
   id: mongoose.Schema.Types.ObjectId;
-  username: string;
   fullName: string;
   email: string;
   team: mongoose.Schema.Types.ObjectId;

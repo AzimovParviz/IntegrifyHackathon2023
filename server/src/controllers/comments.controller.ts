@@ -47,10 +47,12 @@ class CommentsController {
             }).end();
         }
 
+        let taskContent = content ?? "";
+
         const newComment = Comment.create({
             id: this.idGen(),
             task,
-            content,
+            taskContent,
             author
         }, function (err) {
             if (err) {
@@ -75,9 +77,11 @@ class CommentsController {
             }).end();
         }
 
-
         Comment.findByIdAndUpdate(
             Number(id),
+            {
+                content
+            },
             (err: any, comment: any) => {
               if (err) {
                 res.send(err);
