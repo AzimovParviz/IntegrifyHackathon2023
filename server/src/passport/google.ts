@@ -1,7 +1,7 @@
-import GoogleTokenStrategy from 'passport-google-id-token'
-import { GOOGLE_CLIENT_ID } from '../util/secrets'
-import User from '../models/User'
-import { ParsedToken, VerifiedCallback } from '../types'
+import GoogleTokenStrategy from "passport-google-id-token";
+import { GOOGLE_CLIENT_ID } from "../util/secrets";
+import User from "../models/User";
+import { ParsedToken, VerifiedCallback } from "../types";
 
 export default function () {
   return new GoogleTokenStrategy(

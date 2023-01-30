@@ -31,7 +31,6 @@ module.exports = {
     hot: true,
     port: 9000,
   },
-  target: "web",
   devtool: isDevelopment ? "inline-source-map" : false,
   optimization: {
     minimizer: [new TerserJSPlugin(),  new CssMinimizerPlugin()],
