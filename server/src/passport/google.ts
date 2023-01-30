@@ -1,7 +1,14 @@
 import GoogleTokenStrategy from "passport-google-id-token";
-import { GOOGLE_CLIENT_ID } from "../util/secrets";
+import { GOOGLE_CLIENT_ID } from "../utils/secrets";
 import User from "../models/User";
+
+//need to fill it it tipes folder
 import { ParsedToken, VerifiedCallback } from "../types";
+
+
+// need to change logic; if role === Role.admin
+const adminEmail = "parviz.azimov@integrify.io";
+
 
 export default function () {
   return new GoogleTokenStrategy(
@@ -25,7 +32,7 @@ export default function () {
             email: parsedToken.payload.email,
             firstName: parsedToken.payload.given_name,
             lastName: parsedToken.payload.family_name,
-            isAdmin: parsedToken.payload.email === 'parviz.azimov@integrify.io',
+            isAdmin: parsedToken.payload.email === adminEmail,
           })
           user.save()
         }
