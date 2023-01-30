@@ -20,6 +20,11 @@ export enum attachmentCategory {
   File = "file",
 }
 
+export enum userRole {
+  ADMIN = "admin",
+  USER = "user"
+}
+
 type ParsedTokenPayload = {
   email: string
     email_verified: string
@@ -50,11 +55,4 @@ export type User = {
   team: Team,
   status: UserStatus,
   assignedTasks: number[]
-}
-
-export type Comment = {
-  id: number,
-  author: number,
-  task: number,
-  content: string
 }

@@ -1,16 +1,29 @@
 import mongoose, { Document } from "mongoose";
+import { userRole } from "../types";
 
 export type UserDocument = Document & {
+  id: mongoose.Schema.Types.ObjectId;
+  username: string;
   fullName: string;
   email: string;
-  //there will be a role as well
+  team: mongoose.Schema.Types.ObjectId;
+    //there will be a role as well
+  role: userRole,
   assignedTask: mongoose.Schema.Types.ObjectId[];
 };
 
 const userSchema = new mongoose.Schema({
+  id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  },
   fullName: {
     type: String,
     index: true,
+    required: true,
+  },
+  role: {
+    type: String,
     required: true,
   },
   email: {
@@ -20,6 +33,7 @@ const userSchema = new mongoose.Schema({
   assignedTask: {
     type: [mongoose.Schema.Types.ObjectId],
   },
+ 
 });
 
 export default mongoose.model<UserDocument>("User", userSchema);
