@@ -9,18 +9,22 @@ const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
   entry: {
-    client: path.resolve(__dirname, ".", "client", "index.tsx")
+    client: path.resolve(__dirname, ".", "/client/src", "index.tsx")
   },
   mode: isDevelopment ? "development" : "production",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js"
   },
-  target: "",
+  target: 'web',
+  watchOptions: {
+    ignored: ["node_modules", path.join(__dirname, "server")]
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    watchFiles: ["./src/*"],
     client: {
       overlay: {
         errors: true,
@@ -64,7 +68,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./client/index.html"
+      template: path.resolve(__dirname, ".", "/client/src", "index.html")
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

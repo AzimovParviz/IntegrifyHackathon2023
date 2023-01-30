@@ -12,20 +12,20 @@ class CommentsController {
 
     async getAllCommentsFromTask(req: Request, res: Response) {
         const { id } = req.query;
-
+        console.log(req, res);
         console.log(Comment.find({task: id}));
     }
 
     async addCommentToTask(req: Request, res: Response) {
-
+        console.log(req, res);
     }
 
     async updateCommentFromTask(req: Request, res: Response) {
-
+        console.log(req, res);
     }
 
     async deleteCommentFromTask(req: Request, res: Response) {
-
+        console.log(req, res);
     }
 }
 
