@@ -1,4 +1,6 @@
 import express from "express";
+const router = express.Router();
+
 import { comments } from "../controllers/comments.controller";
 
 const {
@@ -7,7 +9,7 @@ const {
     updateCommentFromTask,
     deleteCommentFromTask
 } = comments;
-const router = express.Router();
+
 
 router.get("/:taskId", getAllCommentsFromTask);
 router.post("/", addCommentToTask);

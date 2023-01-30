@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import commentsRouter from "./routers/comments.router";
+import usersRouter from "./routers/users.router";
+
 import checkAuth from "./middlewares/checkAuth";
 
 dotenv.config({ path: '.env' })
@@ -22,6 +24,6 @@ app.use(express.json());
 
 // Set up routers
 app.use("/api/v1/comments", checkAuth, commentsRouter);
-
+app.use("/api/v1/users", checkAuth, usersRouter);
 
 export default app;
