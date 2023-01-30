@@ -1,10 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+
 import commentsRouter from "./routers/comments.router";
 import checkAuth from "./middlewares/checkAuth";
 
-dotenv.config();
+dotenv.config({ path: '.env' })
 
 const app = express();
 

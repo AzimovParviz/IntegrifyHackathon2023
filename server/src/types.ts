@@ -37,3 +37,24 @@ export interface ParsedToken {
 export interface VerifiedCallback {
   (error: any, user?: any, info?: any): void
 }
+
+type UserStatus = {};
+
+type Team = {};
+
+export type User = {
+  id: number, 
+  username: string,
+  fullname: string,
+  email: string,
+  team: Team,
+  status: UserStatus,
+  assignedTasks: number[]
+}
+
+export type Comment = {
+  id: number,
+  author: number,
+  task: number,
+  content: string
+}

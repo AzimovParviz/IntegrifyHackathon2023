@@ -42,4 +42,3 @@ if (!MONGODB_URI) {
   }
   process.exit(1)
 }
-
