@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import Comment from "../models/Comment";
 
 class CommentsController {
@@ -8,19 +9,22 @@ class CommentsController {
     this.updateCommentFromTask = this.updateCommentFromTask.bind(this);
     this.deleteCommentFromTask = this.deleteCommentFromTask.bind(this);
     }
-    async getAllCommentsFromTask() {
+
+    async getAllCommentsFromTask(req: Request, res: Response) {
+        const { id } = req.query;
+
+        console.log(Comment.find({task: id}));
+    }
+
+    async addCommentToTask(req: Request, res: Response) {
 
     }
 
-    async addCommentToTask() {
+    async updateCommentFromTask(req: Request, res: Response) {
 
     }
 
-    async updateCommentFromTask() {
-
-    }
-
-    async deleteCommentFromTask() {
+    async deleteCommentFromTask(req: Request, res: Response) {
 
     }
 }

@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@types/cors": "^2.8.13",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/passport-google-id-token": "^0.4.0",
     "@types/react": "^18.0.27",
@@ -37,6 +38,7 @@
   },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "html-webpack-plugin": "^5.5.0",
