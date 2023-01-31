@@ -21,9 +21,10 @@ app.use(cors({
 ));
 
 app.use(express.json());
+app.use(express.urlencoded());
 
 // Set up routers
 app.use("/api/v1/comments", checkAuth, commentsRouter);
-app.use("/api/v1/users", checkAuth, usersRouter);
 
+app.use("/api/v1/users", usersRouter);
 export default app;

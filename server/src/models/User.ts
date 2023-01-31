@@ -14,7 +14,8 @@ export type UserDocument = Document & {
 const userSchema = new mongoose.Schema({
 	id: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		required: true,
+		auto: true
 	},
 	fullName: {
 		type: String,

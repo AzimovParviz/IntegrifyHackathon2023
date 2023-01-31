@@ -1,20 +1,17 @@
 import { Request, Response } from "express";
-import { idGen } from "../helpers/idGen";
+// import { idGen } from "../helpers/idGen";
 import User from "../models/User";
 import { userRole } from "../types";
 
 
 class UsersController {
-	private idGen: () => number ;
-
-	constructor(idGen: () => number) {
+	constructor() {
 		//binding context because want to use async functions
 		this.getListOfUsers = this.getListOfUsers.bind(this);
 		this.getUser = this.getUser.bind(this);
 		this.createNewUser = this.createNewUser.bind(this);
 		this.updateUserInfo = this.updateUserInfo.bind(this);
 		this.deleteUser = this.deleteUser.bind(this);
-		this.idGen = idGen;
 	}
 
 	async getListOfUsers(_req: Request, res: Response) {
@@ -28,14 +25,12 @@ class UsersController {
 	}
 
 	async getUser(req: Request, res: Response) {
-		const { id } = req.query;
-
-		const errMsg = this.validation(Number(id));
+		const { id } = req.params;
 
 		if(errMsg) {
 			res.json({
 				error: errMsg
-			}).end();
+			});
 		}
 
 		User.findById(id, function(err: any, user: any) {
@@ -50,7 +45,7 @@ class UsersController {
 	async createNewUser(req: Request, res: Response) {
 		const { fullName, role, email } = req.body;
 
-		const errMsg = this.validation(0, fullName, role);
+		const errMsg = this.validation(1, fullName, role);
 
 		if(errMsg) {
 			res.json({
@@ -61,7 +56,6 @@ class UsersController {
 		const userEmail = email ?? "";
 
 		User.create({
-			id: this.idGen(),
 			fullName, 
 			role,
 			userEmail,
@@ -79,7 +73,7 @@ class UsersController {
 	}
 
 	async updateUserInfo(req: Request, res: Response) {
-		const { id } = req.query;
+		const { id } = req.params;
 		const { fullName, role, email, assignedTask } = req.body;
 
 		const errMsg = this.validation(id, fullName, role);
@@ -113,7 +107,7 @@ class UsersController {
 	}
 
 	async deleteUser(req: Request, res: Response) {
-		const { id } = req.query;
+		const { id } = req.params;
 
 		const errMsg = this.validation(id);
 
@@ -151,6 +145,6 @@ class UsersController {
 	}
 }
 
-const generateId = idGen();
+// const generateId = idGen();
 
-export const users = new UsersController(generateId);
+export const users = new UsersController();

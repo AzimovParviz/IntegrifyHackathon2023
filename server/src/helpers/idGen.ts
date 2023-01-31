@@ -1,7 +1,7 @@
 export const idGen = () => {
-    let counter = 0;
+	let counter = 0;
 
-    return function() {
-        return counter++;
-    }
-}
+	return function() {
+		return counter++;
+	};
+};

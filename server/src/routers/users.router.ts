@@ -11,9 +11,9 @@ const {
 } = users;
 
 router.get("/all", getListOfUsers);
-router.get("/:userId", getUser);
+router.get("/:id", getUser);
 router.post("/", createNewUser);
-router.put("/:userId", updateUserInfo);
-router.delete("/:userId", deleteUser);
+router.put("/:id", updateUserInfo);
+router.delete("/:id", deleteUser);
 
 export default router;
