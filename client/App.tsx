@@ -1,7 +1,7 @@
-import Login from "../client/src/components/login/login";
+import SignIn from "../client/src/components/signIn/SignIn";
 
 export const App = () => {
     return(
-        <h1><Login/></h1>
+        <h1><SignIn/></h1>
     )
 }
