@@ -1,4 +1,4 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document } from "mongoose"
 
 export type CommentDocument = Document & {
   author: mongoose.Schema.Types.ObjectId;
@@ -24,4 +24,4 @@ const commentSchema = new mongoose.Schema({
 	}
 });
 
-export default mongoose.model<CommentDocument>("Comment", commentSchema);
+export default mongoose.model<CommentDocument>("Comment", commentSchema)

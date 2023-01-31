@@ -1,13 +1,13 @@
-import GoogleTokenStrategy from "passport-google-id-token";
-import { GOOGLE_CLIENT_ID } from "../utils/secrets";
-import User from "../models/User";
+import GoogleTokenStrategy from "passport-google-id-token"
+import { GOOGLE_CLIENT_ID } from "../utils/secrets"
+import User from "../models/User"
 
 //need to fill it it tipes folder
-import { ParsedToken, VerifiedCallback } from "../types";
+import { ParsedToken, VerifiedCallback } from "../types"
 
 
 // need to change logic; if role === Role.admin
-const adminEmail = "parviz.azimov@integrify.io";
+const adminEmail = "placeholder@email.com"
 
 
 export default function () {
@@ -21,27 +21,27 @@ export default function () {
 			done: VerifiedCallback
 		) => {
 			try {
-				console.log("googleId:", googleId);
-				console.log("parsedToken:", parsedToken);
+				console.log("googleId:", googleId)
+				console.log("parsedToken:", parsedToken)
 
 				let user: any = await User.findOne({
 					email: parsedToken.payload.email,
-				});
+				})
 				if (!user) {
 					user = new User({
 						email: parsedToken.payload.email,
 						firstName: parsedToken.payload.given_name,
 						lastName: parsedToken.payload.family_name,
 						isAdmin: parsedToken.payload.email === adminEmail,
-					});
-					user.save();
+					})
+					user.save()
 				}
 
-				done(null, user);
+				done(null, user)
 			} catch (error) {
-				done(error);
+				done(error)
 			}
 		}
-	);
+	)
 }
 

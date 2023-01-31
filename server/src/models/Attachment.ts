@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose";
-import { attachmentCategory } from "../types";
+import mongoose, { Document } from "mongoose"
+import { attachmentCategory } from "../types"
 
 export type AttachmentDocument = Document & {
   name: string;
@@ -26,4 +26,6 @@ const attachmentSchema = new mongoose.Schema({
 export default mongoose.model<AttachmentDocument>(
 	"Attachment",
 	attachmentSchema
+
 );
+

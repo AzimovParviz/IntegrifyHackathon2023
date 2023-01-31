@@ -5,7 +5,7 @@ module.exports = {
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:react/recommended",
+	"plugin:react/recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"overrides": [
@@ -21,7 +21,7 @@ module.exports = {
 	],
 	"rules": {
 		"indent": [
-			"error",
+			0,
 			"tab"
 		],
 		"linebreak-style": [
@@ -33,8 +33,9 @@ module.exports = {
 			"double"
 		],
 		"semi": [
-			"error",
-			"always"
-		]
+			0,
+			"never"
+		],
+		"@typescript-eslint/no-explicit-any": "off",
 	}
 };

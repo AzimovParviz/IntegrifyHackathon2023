@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose";
-import { userRole } from "../types";
+import mongoose, { Document } from "mongoose"
+import { userRole } from "../types"
 
 export type UserDocument = Document & {
   id: mongoose.Schema.Types.ObjectId;
@@ -34,6 +34,6 @@ const userSchema = new mongoose.Schema({
 		type: [mongoose.Schema.Types.ObjectId],
 	},
  
-});
+})
 
-export default mongoose.model<UserDocument>("User", userSchema);
+export default mongoose.model<UserDocument>("User", userSchema)
