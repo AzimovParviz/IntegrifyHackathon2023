@@ -1,5 +1,7 @@
+import Login from "../client/src/components/login/login";
+
 export const App = () => {
     return(
-        <h1>Hello World</h1>
+        <h1><Login/></h1>
     )
 }
