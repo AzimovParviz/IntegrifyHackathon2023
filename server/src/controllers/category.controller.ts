@@ -1,26 +1,28 @@
 import { Request, Response, NextFunction } from "express";
 
-import Attachment from "../models/Attachment";
+import Category from "../models/Category";
 import { BadRequestError } from "../helpers/apiError";
-import attachmentService from "../services/attachment.service";
+import categoryService from "../services/category.service";
 
-// POST /attachments
-export const createAttachment = async (
+// POST /categorys
+export const createCategory = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { name, categories, status, creationDate } = req.body;
+    const { name, description, numberOfTasks, usersAssigned, status } =
+      req.body;
 
-    const attachment = new Attachment({
+    const category = new Category({
       name,
-      categories,
+      description,
+      numberOfTasks,
+      usersAssigned,
       status,
-      creationDate,
     });
 
-    await attachmentService.create(attachment);
+    await categoryService.create(category);
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
@@ -30,17 +32,17 @@ export const createAttachment = async (
   }
 };
 
-// PUT /attachments/:attachmentId
-export const updateAttachment = async (
+// PUT /categorys/:categoryId
+export const updateCategory = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const update = req.body;
-    const attachmentId = req.params.attachmentId;
-    const updatedAttachment = await attachmentService.update(attachmentId, update);
-    res.json(updatedAttachment);
+    const categoryId = req.params.categoryId;
+    const updatedCategory = await categoryService.update(categoryId, update);
+    res.json(updatedCategory);
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
@@ -50,14 +52,14 @@ export const updateAttachment = async (
   }
 };
 
-// DELETE /attachments/:attachmentId
-export const deleteAttachment = async (
+// DELETE /categorys/:categoryId
+export const deleteCategory = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await attachmentService.deleteAttachment(req.params.attachmentId);
+    await categoryService.deleteCategory(req.params.categoryId);
     res.status(204).end();
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
@@ -68,14 +70,14 @@ export const deleteAttachment = async (
   }
 };
 
-// GET /attachments/:attachmentId
+// GET /categorys/:categoryId
 export const findById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await attachmentService.findById(req.params.attachmentId));
+    res.json(await categoryService.findById(req.params.categoryId));
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
@@ -85,14 +87,14 @@ export const findById = async (
   }
 };
 
-// GET /attachments
+// GET /categorys
 export const findAll = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await attachmentService.findAll());
+    res.json(await categoryService.findAll());
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
