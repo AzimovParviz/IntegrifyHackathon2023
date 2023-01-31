@@ -1,5 +1,16 @@
+import { ThemeProvider, createTheme } from "@material-ui/core/ThemeProvider";
+
+import Home from "./pages/Home"
+
 export const App = () => {
+
+    const theme = createTheme({
+        palette: {mode: 'dark'}
+    })
+
     return(
-        <h1>Hello World</h1>
+        <ThemeProvider theme={theme}>
+            <Home/>
+        </ThemeProvider>
     )
 }
