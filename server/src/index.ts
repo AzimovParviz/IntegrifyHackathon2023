@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv"; 
 
-import checkAuth from "./middlewares/checkAuth";
 
 import commentsRouter from "./routers/comments.router";
 import usersRouter from "./routers/users.router";
@@ -24,7 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 // Set up routers
-app.use("/api/v1/comments", checkAuth, commentsRouter);
+app.use("/api/v1/comments", commentsRouter);
 
 app.use("/api/v1/users", usersRouter);
+
 export default app;

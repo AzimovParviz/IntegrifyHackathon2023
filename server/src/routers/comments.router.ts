@@ -1,14 +1,12 @@
 import express from "express";
 const router = express.Router();
 
-import { comments } from "../controllers/comments.controller";
-
-const {
+import {
 	getAllCommentsFromTask,
 	addCommentToTask,
 	updateCommentFromTask,
 	deleteCommentFromTask
-} = comments;
+} from "../services/comments.service";
 
 
 router.get("/:taskId", getAllCommentsFromTask);

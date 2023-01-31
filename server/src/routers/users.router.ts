@@ -1,14 +1,13 @@
 import express from "express";
 const router = express.Router();
-import { users } from "../controllers/users.controller";
 
-const {
+import {
 	getListOfUsers,
 	getUser,
 	createNewUser,
 	updateUserInfo,
 	deleteUser
-} = users;
+} from "../services/users.service";
 
 router.get("/all", getListOfUsers);
 router.get("/:id", getUser);

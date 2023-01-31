@@ -19,7 +19,8 @@ const commentSchema = new mongoose.Schema({
 	content: String,
 	id: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		required: true,
+		auto: true
 	}
 });
 
