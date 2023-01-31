@@ -1,5 +1,15 @@
+import Home from "./pages/Home";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 export const App = () => {
-    return(
-        <h1>Hello World</h1>
-    )
-}
+
+	const theme = createTheme({
+		palette: {mode: "dark"}
+	});
+
+	return(
+
+		<ThemeProvider theme={theme}>
+			<Home/>
+		</ThemeProvider>
+	);
+};
