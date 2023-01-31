@@ -13,7 +13,7 @@ export const createCategory = async (
   try {
     const { name, description, numberOfTasks, usersAssigned, status } =
       req.body;
-
+    
     const category = new Category({
       name,
       description,
@@ -23,7 +23,11 @@ export const createCategory = async (
     });
 
     await categoryService.create(category);
+
+    res.json(category);
+
   } catch (error) {
+    console.log(error)
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
     } else {
@@ -42,7 +46,9 @@ export const updateCategory = async (
     const update = req.body;
     const categoryId = req.params.categoryId;
     const updatedCategory = await categoryService.update(categoryId, update);
+
     res.json(updatedCategory);
+
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));
@@ -60,7 +66,9 @@ export const deleteCategory = async (
 ) => {
   try {
     await categoryService.deleteCategory(req.params.categoryId);
+
     res.status(204).end();
+    
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));

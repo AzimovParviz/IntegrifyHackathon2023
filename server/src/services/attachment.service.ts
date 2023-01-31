@@ -1,5 +1,5 @@
 import Attachment, { AttachmentDocument } from "../models/Attachment";
-import { BadRequestError, NotFoundError } from "../helpers/apiError";
+import { NotFoundError } from "../helpers/apiError";
 
 const create = async (
   attachment: AttachmentDocument

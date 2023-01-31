@@ -2,14 +2,20 @@ import { Request, Response } from "express";
 import User from "../models/User";
 import { userRole } from "../types";
 
-const validation = (id: any, fullName?: string, role?: userRole): string => {
+const validation = (id: any, firstName?: string, lastName?: string, team?: string, role?: userRole): string => {
 	const errors = [];
 
 	if(!id) {
 		errors.push("Id is required.");
 	}
-	if(!fullName) {
-		errors.push("fullName is required.");
+	if(!firstName) {
+		errors.push("firstName is required.");
+	}
+	if(!lastName) {
+		errors.push("lastName is required.");
+	}
+	if(!team) {
+		errors.push("team is required.");
 	}
 	if(!role) {
 		errors.push("Role is required.");
@@ -34,9 +40,9 @@ export const deleteUser = (req: Request, res: Response) => {
 
 export const updateUserInfo = (req: Request, res: Response) => {
 	const { id } = req.params;
-	const { fullName, role, email, assignedTask } = req.body;
+	const { firstName, lastName, team, role, email, assignedTask} = req.body;
 
-	const errMsg = validation(id, fullName, role);
+	const errMsg = validation(id, firstName, lastName, team,  role);
 
 	if(errMsg) {
 		res.json({
@@ -49,8 +55,10 @@ export const updateUserInfo = (req: Request, res: Response) => {
 
 	User.findByIdAndUpdate(id, 
 		{
-			fullName,
-			role, 
+			firstName, 
+			lastName, 
+			team, 
+			role,
 			userEmail,
 			userTasks
 		},
@@ -67,9 +75,9 @@ export const updateUserInfo = (req: Request, res: Response) => {
 };
 
 export const createNewUser = (req: Request, res: Response) => {
-	const { fullName, role, email } = req.body;
+	const { firstName, lastName, team, role, email } = req.body;
 
-	const errMsg = validation(1, fullName, role);
+	const errMsg = validation(1, firstName, lastName, team,  role);
 
 	if(errMsg) {
 		res.json({
@@ -80,7 +88,9 @@ export const createNewUser = (req: Request, res: Response) => {
 	const userEmail = email ?? "";
 
 	User.create({
-		fullName, 
+		firstName, 
+		lastName, 
+		team, 
 		role,
 		userEmail,
 		assignedTask: []

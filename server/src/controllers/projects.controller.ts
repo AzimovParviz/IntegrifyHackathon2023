@@ -20,6 +20,8 @@ export const createProject = async (
     });
 
     await projectService.create(project);
+    
+    res.send(project);
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));

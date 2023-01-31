@@ -35,4 +35,5 @@ app.use("/api/v1/attachments", attacmentsRouter);
 app.use("/api/v1/projects", projectsRouter);
 app.use("/api/v1/tasks", tasksRouter);
 app.use("/api/v1/categories", categoriesRouter);
-export default app
+
+export default app;

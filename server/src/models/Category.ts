@@ -31,9 +31,12 @@ const categorySchema = new mongoose.Schema({
 	numberOfTasks: {
 		type: Number,
 	},
-	usersAssigned: {
+	status: {
 		type: String,
 		enum: Object.values(categoryStatus),
+	},
+	usersAssigned: {
+		type: [mongoose.Schema.Types.ObjectId],
 		ref: "User",
 	},
 });

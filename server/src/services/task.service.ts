@@ -1,5 +1,5 @@
 import Task, {TaskDocument} from "../models/Task";
-import { BadRequestError, NotFoundError } from "../helpers/apiError";
+import {  NotFoundError } from "../helpers/apiError";
 
 const create = async (task: TaskDocument): Promise<TaskDocument> => {
 	return task.save()

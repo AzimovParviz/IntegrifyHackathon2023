@@ -11,7 +11,7 @@ import   {
 
 router.get("/:attachmentId", findById);
 router.get("/", findAll);
-router.post("/:attachmentId", createAttachment);
+router.post("/", createAttachment);
 router.put("/:attachmentId", updateAttachment)
 router.delete("/:attachmentId", deleteAttachment);
 

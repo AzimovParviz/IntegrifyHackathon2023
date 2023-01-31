@@ -4,9 +4,9 @@ import User from "../models/User";
 import Task from "../models/Task";
 
 export const getAllCommentsFromTask = (req: Request, res: Response) => {
-	const { id } = req.params;
+	const { taskId } = req.params;
     
-	const errMsg = validation(id);
+	const errMsg = validation(taskId);
 
 	if(errMsg) {
 		res.json({
@@ -14,7 +14,7 @@ export const getAllCommentsFromTask = (req: Request, res: Response) => {
 		}).end();
 	}
 
-	Comment.find({task: Number(id)}, (err: any, comments: any) => {
+	Comment.find({task: taskId}, (err: any, comments: any) => {
 		if (err) {
 			res.send(err);
 		} else {
@@ -50,10 +50,10 @@ export const addCommentToTask = (req: Request, res: Response) => {
 };
 
 export const updateCommentFromTask = (req: Request, res: Response) => {
-	const { id } = req.params;
+	const { commentId } = req.params;
 	const { content } = req.body;
-
-	const errMsg = validation(id, undefined, undefined, content);
+	
+	const errMsg = validation(commentId, undefined, undefined, content);
 
 	if(errMsg) {
 		res.json({
@@ -62,7 +62,7 @@ export const updateCommentFromTask = (req: Request, res: Response) => {
 	}
 
 	Comment.findByIdAndUpdate(
-		Number(id),
+		commentId,
 		{
 			content
 		},
@@ -80,10 +80,10 @@ export const updateCommentFromTask = (req: Request, res: Response) => {
 };
 
 export const deleteCommentFromTask = (req: Request, res: Response) => {
-	const { id } = req.params;
+	const { commentId } = req.params;
 
 	Comment.deleteOne(
-		{_id: Number(id)},
+		{_id: commentId},
 		(err: any) => {
 			if (err) {
 				res.send(err);
@@ -108,7 +108,7 @@ const validation =(id: any, authorId?: number, taskId?: number, content?: string
 	if(!id) {
 		errors.push("Id is required.");
 	}
-	if(!content) {
+	if(content === "") {
 		errors.push(
 			"Content is the only thing that can be changed and it is a required."
 		);

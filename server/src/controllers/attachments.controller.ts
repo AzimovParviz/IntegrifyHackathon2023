@@ -21,6 +21,8 @@ export const createAttachment = async (
     });
 
     await attachmentService.create(attachment);
+    
+    res.send(attachment);
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));

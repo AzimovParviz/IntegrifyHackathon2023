@@ -1,5 +1,5 @@
 import Project, {ProjectDocument} from "../models/Project";
-import { BadRequestError, NotFoundError } from "../helpers/apiError";
+import { NotFoundError } from "../helpers/apiError";
 
 const create = async (project: ProjectDocument): Promise<ProjectDocument> => {
 	return project.save()

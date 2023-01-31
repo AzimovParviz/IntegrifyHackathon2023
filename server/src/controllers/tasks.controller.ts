@@ -33,6 +33,8 @@ export const createTask = async (
     });
 
     await taskService.create(task);
+
+    res.send(task);
   } catch (error) {
     if (error instanceof Error && error.name == "ValidationError") {
       next(new BadRequestError("Invalid Request", 400, error));

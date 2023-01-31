@@ -4,7 +4,6 @@ export type CommentDocument = Document & {
   author: mongoose.Schema.Types.ObjectId;
   task: mongoose.Schema.Types.ObjectId;
   content: string;
-  id: mongoose.Schema.Types.ObjectId;
 };
 
 const commentSchema = new mongoose.Schema({
@@ -17,11 +16,7 @@ const commentSchema = new mongoose.Schema({
 		require: true,
 	},
 	content: String,
-	id: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true,
-		auto: true
-	}
+	
 });
 
 export default mongoose.model<CommentDocument>("Comment", commentSchema)

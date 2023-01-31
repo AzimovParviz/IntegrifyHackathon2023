@@ -1,9 +1,10 @@
 import Category, { CategoryDocument } from "../models/Category";
-import { BadRequestError, NotFoundError } from "../helpers/apiError";
+import { NotFoundError } from "../helpers/apiError";
 
 const create = async (
   category: CategoryDocument
 ): Promise<CategoryDocument> => {
+
   return category.save();
 };
 
