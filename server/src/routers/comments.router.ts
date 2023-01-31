@@ -16,4 +16,4 @@ router.post("/", addCommentToTask)
 router.put("/:commentId", updateCommentFromTask)
 router.delete("/:commentId", deleteCommentFromTask)
 
-export default router
+export default router;

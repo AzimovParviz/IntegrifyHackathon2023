@@ -9,8 +9,10 @@ import {
     deleteProject
 } from "../controllers/projects.controller";
 
-router.get("/api/v1/projects", findAll);
-router.get("/api/v1/projects/:projectId", findById);
-router.post("/api/v1/projects/", createProject);
-router.put("/api/v1/projects/:projectId", updateProject);
-router.delete("/api/v1/projects/:projectId", deleteProject);
+router.get("/", findAll);
+router.get("/:projectId", findById);
+router.post("/", createProject);
+router.put("/:projectId", updateProject);
+router.delete("/:projectId", deleteProject);
+
+export default router;

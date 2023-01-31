@@ -9,7 +9,7 @@ import {
 	deleteUser
 } from "../services/users.service";
 
-router.get("/all", getListOfUsers);
+router.get("/", getListOfUsers);
 router.get("/:id", getUser);
 router.post("/", createNewUser);
 router.put("/:id", updateUserInfo);

@@ -9,8 +9,10 @@ import   {
     deleteAttachment
 } from "../controllers/attachments.controller";
 
-router.get("/api/v1/attachments/attachmentIdd", findById);
-router.get("/api/v1/attachments/", findAll);
-router.post("/api/v1/attachments/", createAttachment);
-router.put("/api/v1/attachments/:attachmentId", updateAttachment)
-router.delete("/api/v1/attachments/attachmentId", deleteAttachment);
+router.get("/:attachmentId", findById);
+router.get("/", findAll);
+router.post("/:attachmentId", createAttachment);
+router.put("/:attachmentId", updateAttachment)
+router.delete("/:attachmentId", deleteAttachment);
+
+export default router;

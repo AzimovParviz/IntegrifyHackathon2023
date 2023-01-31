@@ -2,8 +2,13 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv"; 
 
-import commentsRouter from "./routers/comments.router"
-import usersRouter from "./routers/users.router"
+import commentsRouter from "./routers/comments.router";
+import usersRouter from "./routers/users.router";
+import attacmentsRouter from "./routers/attachment.router";
+import projectsRouter from "./routers/projects.router";
+import tasksRouter from "./routers/tasks.router";
+import categoriesRouter from "./routers/category.router";
+
 
 dotenv.config();
 
@@ -26,5 +31,8 @@ app.use(express.urlencoded());
 // ! add auth middleware later
 app.use("/api/v1/comments", commentsRouter);
 app.use("/api/v1/users", usersRouter);
-
+app.use("/api/v1/attachments", attacmentsRouter);
+app.use("/api/v1/projects", projectsRouter);
+app.use("/api/v1/tasks", tasksRouter);
+app.use("/api/v1/categories", categoriesRouter);
 export default app

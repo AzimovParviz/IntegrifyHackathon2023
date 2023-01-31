@@ -9,8 +9,10 @@ import {
     findAll
 } from "../controllers/tasks.controller";
 
-router.get("api/v1/tasks/", findAll);
-router.get("api/v1/tasks/", findById);
-router.post("api/v1/tasks/", createTask);
-router.put("api/v1/tasks/", updateTask);
-router.delete("api/v1/tasks/", deleteTask);
+router.get("/", findAll);
+router.get("/:taskId", findById);
+router.post("/", createTask);
+router.put("/:taskId", updateTask);
+router.delete("/:taskId", deleteTask);
+
+export default router;
