@@ -1,6 +1,6 @@
 import mongoose, { Document } from "mongoose"
 import { taskStatus } from "../types"
-
+//TODO: add priority to tasks 
 export type TaskDocument = Document & {
   name: string;
   description: string;
