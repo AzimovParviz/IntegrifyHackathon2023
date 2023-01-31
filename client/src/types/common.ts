@@ -3,12 +3,14 @@ export interface Common {
     creationDate?: Date,
     updatedDate?: Date,
     name: string,
+    _id?: string,
+    _v?: string
 }
 
 export interface Category extends Common {
     description: string,
     tasks: Task[],
-    users: User[],
+    users: string[],
     status: "active" | "inactive" | "disabled",
 }
 
@@ -18,17 +20,17 @@ export interface User extends Common {
     role: Role,
     team: string,
     status: "active" | "inactive" | "disabled",
-    taskAsigned: Task[],
+    taskAsigned: string[],
 }
 
 export interface Task extends Common {
     color: string,
-    description: string,
-    comments: Comment[],
-    attachments: Attachment[],
-    asignee: number[], //User.id[]
-    status: Category
-    dueDate: Date
+    description?: string,
+    comments?: Comment[],
+    attachments?: Attachment[],
+    asignee?: string[], //User.id[]
+    status?: Category
+    dueDate?: Date
 }
 
 export interface Project extends Common {
