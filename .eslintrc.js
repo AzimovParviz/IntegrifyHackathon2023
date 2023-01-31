@@ -21,7 +21,7 @@ module.exports = {
 	],
 	"rules": {
 		"indent": [
-			"warn",
+			0,
 			"tab"
 		],
 		"linebreak-style": [
@@ -33,7 +33,7 @@ module.exports = {
 			"double"
 		],
 		"semi": [
-			"warn",
+			0,
 			"never"
 		],
 		"@typescript-eslint/no-explicit-any": "off",
