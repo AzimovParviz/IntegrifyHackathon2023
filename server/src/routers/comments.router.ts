@@ -4,10 +4,10 @@ const router = express.Router();
 import { comments } from "../controllers/comments.controller";
 
 const {
-    getAllCommentsFromTask,
-    addCommentToTask,
-    updateCommentFromTask,
-    deleteCommentFromTask
+	getAllCommentsFromTask,
+	addCommentToTask,
+	updateCommentFromTask,
+	deleteCommentFromTask
 } = comments;
 
 

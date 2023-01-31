@@ -12,26 +12,26 @@ export type UserDocument = Document & {
 };
 
 const userSchema = new mongoose.Schema({
-  id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true
-  },
-  fullName: {
-    type: String,
-    index: true,
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    index: true,
-  },
-  assignedTask: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
+	id: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true
+	},
+	fullName: {
+		type: String,
+		index: true,
+		required: true,
+	},
+	role: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		index: true,
+	},
+	assignedTask: {
+		type: [mongoose.Schema.Types.ObjectId],
+	},
  
 });
 

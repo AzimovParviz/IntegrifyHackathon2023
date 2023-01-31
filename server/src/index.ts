@@ -1,13 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
+import * as dotenv from "dotenv"; 
 
 import checkAuth from "./middlewares/checkAuth";
 
 import commentsRouter from "./routers/comments.router";
 import usersRouter from "./routers/users.router";
 
-dotenv.config({ path: '.env' })
+dotenv.config();
 
 const app = express();
 

@@ -1,10 +1,10 @@
-import passport from 'passport'
+import passport from "passport";
 
 passport.serializeUser(function (user, done) {
-  done(null, user)
-})
+	done(null, user);
+});
 
 passport.deserializeUser(function (user: any, done) {
-  done(null, user)
-})
+	done(null, user);
+});
 

@@ -3,11 +3,11 @@ const router = express.Router();
 import { users } from "../controllers/users.controller";
 
 const {
-    getListOfUsers,
-    getUser,
-    createNewUser,
-    updateUserInfo,
-    deleteUser
+	getListOfUsers,
+	getUser,
+	createNewUser,
+	updateUserInfo,
+	deleteUser
 } = users;
 
 router.get("/all", getListOfUsers);

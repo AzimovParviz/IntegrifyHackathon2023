@@ -20,22 +20,22 @@ export type CategoryDocument = Document & {
 };
 
 const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  description: {
-    type: String,
-  },
-  numberOfTasks: {
-    type: Number,
-  },
-  usersAssigned: {
-    type: String,
-    enum: Object.values(categoryStatus),
-    ref: "User",
-  },
+	name: {
+		type: String,
+		required: true,
+		index: true,
+	},
+	description: {
+		type: String,
+	},
+	numberOfTasks: {
+		type: Number,
+	},
+	usersAssigned: {
+		type: String,
+		enum: Object.values(categoryStatus),
+		ref: "User",
+	},
 });
 
 export default mongoose.model<CategoryDocument>("Category", categorySchema);
