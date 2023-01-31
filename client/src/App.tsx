@@ -1,10 +1,16 @@
+
 import Home from "./pages/Home"
 
 export const App = () => {
+
+    const theme = createTheme({
+        palette: {mode: 'dark'}
+    })
+
     return(
-        <div>
-            <h1>Hello World !</h1>
+
+        <ThemeProvider theme={theme}>
             <Home/>
-        </div>
+        </ThemeProvider>
     )
 }
