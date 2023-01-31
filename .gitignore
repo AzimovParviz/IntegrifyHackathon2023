@@ -18,6 +18,7 @@ node_modules/
 whitelist.txt
 
 npm-debug.log*
+debug.log*
 yarn-debug.log*
 debug.log*
 yarn-error.log*
