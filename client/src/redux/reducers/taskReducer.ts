@@ -37,7 +37,17 @@ export const addTask = createAsyncThunk("addTask", async (params: { task: Task; 
 // Delete task
 export const deleteTask = createAsyncThunk("delete", async (params: { id: string; token: string }) => {
   try {
-    const res: AxiosResponse<Task | Error, any> = await axiosInstance.delete(`tasks/`, rqHeader(params.token));
+    const res: AxiosResponse<Task | Error, any> = await axiosInstance.delete(`tasks/${params.id}`, rqHeader(params.token));
+    if (!(res.data instanceof Error)) return res.data;
+  } catch (e) {
+    return;
+  }
+});
+
+// PUT task
+export const updateTask = createAsyncThunk("delete", async (params: { id: string; token: string }) => {
+  try {
+    const res: AxiosResponse<Task | Error, any> = await axiosInstance.delete(`tasks/${params.id}`, rqHeader(params.token));
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
@@ -66,15 +76,31 @@ const taskSlice = createSlice({
         } else return { ...state, allTasks: [...state.allTasks, action.payload] };
       })
 
-	  .addCase(deleteTask.fulfilled, (state, action) => {
-        if (action.payload instanceof AxiosError || !action.payload ) {
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        if (action.payload instanceof AxiosError || !action.payload) {
           console.log("There is something wrong when fetching data. Please refresh the page.");
           return state;
         } else {
-			const filteredTask = state.allTasks.filter((task:Task) => task.id !== action.payload?.id);
-			return { allTasks: filteredTask };
-		}
+          const filteredTask = state.allTasks.filter((task: Task) => task.id !== action.payload?.id);
+          return { allTasks: filteredTask };
+        }
       })
+
+      .addCase(updateTask.fulfilled, (state, action) => {
+        if (action.payload instanceof AxiosError || !action.payload) {
+          console.log("There is something wrong when fetching data. Please refresh the page.");
+          return state;
+        } else {
+          const data: Task = action.payload;
+          const newAllTasks = state.allTasks.map((task) => {
+            if (task.id === data.id) {
+              return data;
+            }
+            return task;
+          });
+          return { ...state, newAllTasks };
+        }
+      });
   },
 });
 
