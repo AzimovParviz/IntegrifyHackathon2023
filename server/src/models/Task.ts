@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose"
-import { taskStatus } from "../types"
+import mongoose, { Document } from "mongoose";
+import { taskStatus } from "../types";
 //TODO: add priority to tasks 
 export type TaskDocument = Document & {
   name: string;
@@ -45,4 +45,4 @@ const taskSchema = new mongoose.Schema({
 	},
 });
 
-export default mongoose.model<TaskDocument>("Task", taskSchema)
+export default mongoose.model<TaskDocument>("Task", taskSchema);

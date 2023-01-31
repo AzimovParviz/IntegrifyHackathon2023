@@ -3,9 +3,9 @@ export default class ApiError extends Error {
     readonly statusCode: number,
     readonly message: string,
     readonly source?: Error
-  ) {
-    super()
-  }
+	) {
+		super();
+	}
 }
 
 export class NotFoundError extends ApiError {
@@ -13,9 +13,9 @@ export class NotFoundError extends ApiError {
     readonly message: string = "Not Found",
     readonly statusCode: number = 404,
     source?: Error | any
-  ) {
-    super(statusCode, message, source)
-  }
+	) {
+		super(statusCode, message, source);
+	}
 }
 
 export class ForbiddenError extends ApiError {
@@ -23,9 +23,9 @@ export class ForbiddenError extends ApiError {
     readonly message: string = "Forbidden",
     readonly statusCode: number = 403,
     source?: Error | any
-  ) {
-    super(statusCode, message, source)
-  }
+	) {
+		super(statusCode, message, source);
+	}
 }
 
 export class InternalServerError extends ApiError {
@@ -33,9 +33,9 @@ export class InternalServerError extends ApiError {
     readonly message: string = "Internal Server Error",
     readonly statusCode: number = 500,
     source?: Error | any
-  ) {
-    super(statusCode, message, source)
-  }
+	) {
+		super(statusCode, message, source);
+	}
 }
 
 export class UnauthorizedError extends ApiError {
@@ -43,9 +43,9 @@ export class UnauthorizedError extends ApiError {
     readonly message: string = "Unauthorized Request",
     readonly statusCode: number = 401,
     source?: Error | any
-  ) {
-    super(statusCode, message, source)
-  }
+	) {
+		super(statusCode, message, source);
+	}
 }
 
 export class BadRequestError extends ApiError {
@@ -53,8 +53,8 @@ export class BadRequestError extends ApiError {
     readonly message: string = "Bad Request",
     readonly statusCode: number = 400,
     source?: Error | any
-  ) {
-    super(statusCode, message, source)
-  }
+	) {
+		super(statusCode, message, source);
+	}
 }
 

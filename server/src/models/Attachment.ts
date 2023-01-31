@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose"
-import { attachmentCategory } from "../types"
+import mongoose, { Document } from "mongoose";
+import { attachmentCategory } from "../types";
 
 export type AttachmentDocument = Document & {
   name: string;

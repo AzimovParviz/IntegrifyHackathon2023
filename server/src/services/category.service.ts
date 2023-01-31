@@ -2,61 +2,61 @@ import Category, { CategoryDocument } from "../models/Category";
 import { NotFoundError } from "../helpers/apiError";
 
 const create = async (
-  category: CategoryDocument
+	category: CategoryDocument
 ): Promise<CategoryDocument> => {
 
-  return category.save();
+	return category.save();
 };
 
 const findById = async (categoryId: string): Promise<CategoryDocument> => {
-  const foundCategory = await Category.findById(categoryId);
+	const foundCategory = await Category.findById(categoryId);
 
-  if (!foundCategory) {
-    throw new NotFoundError(`Category ${categoryId} not found`);
-  }
+	if (!foundCategory) {
+		throw new NotFoundError(`Category ${categoryId} not found`);
+	}
 
-  return foundCategory;
+	return foundCategory;
 };
 
 const findAll = async (): Promise<CategoryDocument[]> => {
-  return Category.find().sort({ lastName: 1 });
+	return Category.find().sort({ lastName: 1 });
 };
 
 const update = async (
-  categoryId: string,
-  update: Partial<CategoryDocument>
+	categoryId: string,
+	update: Partial<CategoryDocument>
 ): Promise<CategoryDocument | null> => {
-  const foundCategory = await Category.findByIdAndUpdate(
-    categoryId,
-    update,
-    {
-      new: true,
-    }
-  );
+	const foundCategory = await Category.findByIdAndUpdate(
+		categoryId,
+		update,
+		{
+			new: true,
+		}
+	);
 
-  if (!foundCategory) {
-    throw new NotFoundError(`Category ${categoryId} not found`);
-  }
+	if (!foundCategory) {
+		throw new NotFoundError(`Category ${categoryId} not found`);
+	}
 
-  return foundCategory;
+	return foundCategory;
 };
 
 const deleteCategory = async (
-  categoryId: string
+	categoryId: string
 ): Promise<CategoryDocument | null> => {
-  const foundCategory = Category.findByIdAndDelete(categoryId);
+	const foundCategory = Category.findByIdAndDelete(categoryId);
 
-  if (!foundCategory) {
-    throw new NotFoundError(`Category ${categoryId} not found`);
-  }
+	if (!foundCategory) {
+		throw new NotFoundError(`Category ${categoryId} not found`);
+	}
 
-  return foundCategory;
+	return foundCategory;
 };
 
 export default {
-  create,
-  findById,
-  findAll,
-  update,
-  deleteCategory,
+	create,
+	findById,
+	findAll,
+	update,
+	deleteCategory,
 };

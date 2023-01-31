@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose"
-import { categoryStatus } from "../types"
+import mongoose, { Document } from "mongoose";
+import { categoryStatus } from "../types";
 
 //1. Id: MongoDBId
 //
@@ -42,4 +42,4 @@ const categorySchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model<CategoryDocument>("Category", categorySchema)
+export default mongoose.model<CategoryDocument>("Category", categorySchema);

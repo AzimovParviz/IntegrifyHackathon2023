@@ -1,5 +1,5 @@
-import mongoose, {Document} from "mongoose"
-import { projectStatus } from "../types"
+import mongoose, {Document} from "mongoose";
+import { projectStatus } from "../types";
 
 export type ProjectDocument = Document & {
 	name: string,
@@ -22,6 +22,6 @@ const projectSchema = new mongoose.Schema({
 		enum: Object.values(projectStatus)
 	},
 	creationDate: Date,
-})
+});
 
-export default mongoose.model<ProjectDocument>("Project",projectSchema)
+export default mongoose.model<ProjectDocument>("Project",projectSchema);

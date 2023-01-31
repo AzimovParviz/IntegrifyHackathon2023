@@ -1,5 +1,5 @@
-import express from "express"
-const router = express.Router()
+import express from "express";
+const router = express.Router();
 
 import {
 	getAllCommentsFromTask,
@@ -11,9 +11,9 @@ import {
 
 
 
-router.get("/:taskId", getAllCommentsFromTask)
-router.post("/", addCommentToTask)
-router.put("/:commentId", updateCommentFromTask)
-router.delete("/:commentId", deleteCommentFromTask)
+router.get("/:taskId", getAllCommentsFromTask);
+router.post("/", addCommentToTask);
+router.put("/:commentId", updateCommentFromTask);
+router.delete("/:commentId", deleteCommentFromTask);
 
 export default router;

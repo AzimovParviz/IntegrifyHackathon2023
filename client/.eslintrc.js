@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	"env": {
 		"browser": false,
 		"es2021": true
@@ -26,6 +26,7 @@ module.exports = {
 		],
 		"linebreak-style": [
 			"error",
+			//or windows!!
 			"unix"
 		],
 		"quotes": [

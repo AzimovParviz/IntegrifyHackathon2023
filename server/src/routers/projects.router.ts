@@ -2,11 +2,11 @@ import express from "express";
 const router = express.Router();
 
 import {
-    createProject,
-    findById,
-    findAll,
-    updateProject,
-    deleteProject
+	createProject,
+	findById,
+	findAll,
+	updateProject,
+	deleteProject
 } from "../controllers/projects.controller";
 
 router.get("/", findAll);
