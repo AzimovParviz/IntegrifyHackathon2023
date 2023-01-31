@@ -7,7 +7,7 @@ import { ParsedToken, VerifiedCallback } from "../types"
 
 
 // need to change logic; if role === Role.admin
-const adminEmail = "parviz.azimov@integrify.io"
+const adminEmail = "placeholder@email.com"
 
 
 export default function () {
