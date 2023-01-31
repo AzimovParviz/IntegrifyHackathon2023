@@ -12,10 +12,10 @@ export const login = async (
   const token = jwt.sign(
     {
       userId: user._id,
-      isAdmin: user.isAdmin,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      role: user.role,
     },
     JWT_SECRET,
     {
