@@ -1,29 +1,29 @@
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
+import express from "express"
+import dotenv from "dotenv"
+import cors from "cors"
 
-import checkAuth from "./middlewares/checkAuth";
+import checkAuth from "./middlewares/checkAuth"
 
-import commentsRouter from "./routers/comments.router";
-import usersRouter from "./routers/users.router";
+import commentsRouter from "./routers/comments.router"
+import usersRouter from "./routers/users.router"
 
-dotenv.config({ path: '.env' })
+dotenv.config({ path: ".env" })
 
-const app = express();
+const app = express()
 
 // Express configuration
-app.set("port", process.env["PORT"]);
+app.set("port", process.env["PORT"])
 
 // Global middleware
 app.use(cors({
 	origin: "*"
 }
-));
+))
 
-app.use(express.json());
+app.use(express.json())
 
 // Set up routers
-app.use("/api/v1/comments", checkAuth, commentsRouter);
-app.use("/api/v1/users", checkAuth, usersRouter);
+app.use("/api/v1/comments", checkAuth, commentsRouter)
+app.use("/api/v1/users", checkAuth, usersRouter)
 
-export default app;
+export default app
