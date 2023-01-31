@@ -8,6 +8,7 @@ import attacmentsRouter from "./routers/attachment.router";
 import projectsRouter from "./routers/projects.router";
 import tasksRouter from "./routers/tasks.router";
 import categoriesRouter from "./routers/category.router";
+import authRouter from "./routers/auth.router";
 
 
 dotenv.config();
@@ -29,6 +30,7 @@ app.use(express.urlencoded());
 // Set up routers
 
 // ! add auth middleware later
+app.use("/", authRouter);
 app.use("/api/v1/comments", commentsRouter);
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/attachments", attacmentsRouter);
