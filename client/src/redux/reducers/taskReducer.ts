@@ -4,8 +4,8 @@ import { User } from "../../types/common";
 import { axiosInstance } from "../shared/sharedInstance";
 import { TaskReducer } from "../../types/task";
 
-// Fetch all users from API
-export const fetchAllUsers = createAsyncThunk("fetchAllTasks", async () => {
+// Fetch all tasks from API
+export const fetchAllTasks = createAsyncThunk("fetchAllTasks", async () => {
 	try {
 		const res: AxiosResponse<User[] | Error, any> = await axiosInstance.get("tasks");
 		if (!(res.data instanceof Error)) return res.data;
@@ -20,6 +20,18 @@ const taskSlice = createSlice({
 	reducers: {
     
 	},
+
+	extraReducers: (build) => {
+		build
+			.addCase(fetchAllTasks.fulfilled, (state, action) => {
+				console.log("Task reducer initiate");
+				if (action.payload instanceof AxiosError || !action.payload ) {
+					// handling fetching error
+					console.log("There is something wrong when fetching data. Please refresh the page.");
+					return state;
+				} else return { ...state, allTasks: action.payload };
+			});
+	}
 });
 
 export const taskReducer = taskSlice.reducer;

@@ -18,7 +18,7 @@ const categorySlice = createSlice({
 	name: "categorySlice",
 	initialState: { allCategory: [] } as unknown as CategoryReducer,
 	reducers: {
-    
+		
 	},
 });
 
