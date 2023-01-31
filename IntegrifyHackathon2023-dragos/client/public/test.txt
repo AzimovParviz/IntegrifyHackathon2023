@@ -1,0 +1,1 @@
+test file, pretend it's robots.txt or something

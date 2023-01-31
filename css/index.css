@@ -1,0 +1,23 @@
+.container {
+    width: max-content;
+}
+
+p {
+    color: red;
+    background-color: cyan;
+    overflow: hidden;
+    animation: typing 4s steps(40, end) infinite;
+    white-space: nowrap;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
