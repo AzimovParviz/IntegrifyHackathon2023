@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose";
-import { userRole } from "../types";
+import mongoose, { Document } from "mongoose"
+import { userRole } from "../types"
 
 export type UserDocument = Document & {
   id: mongoose.Schema.Types.ObjectId;
@@ -12,27 +12,27 @@ export type UserDocument = Document & {
 };
 
 const userSchema = new mongoose.Schema({
-  id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true
-  },
-  fullName: {
-    type: String,
-    index: true,
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    index: true,
-  },
-  assignedTask: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
+	id: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true
+	},
+	fullName: {
+		type: String,
+		index: true,
+		required: true,
+	},
+	role: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		index: true,
+	},
+	assignedTask: {
+		type: [mongoose.Schema.Types.ObjectId],
+	},
  
-});
+})
 
-export default mongoose.model<UserDocument>("User", userSchema);
+export default mongoose.model<UserDocument>("User", userSchema)
