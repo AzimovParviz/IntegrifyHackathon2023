@@ -3,7 +3,8 @@ import { userRole } from "../types"
 
 export type UserDocument = Document & {
   id: mongoose.Schema.Types.ObjectId;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   team: mongoose.Schema.Types.ObjectId;
     //there will be a role as well
@@ -17,13 +18,19 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		auto: true
 	},
-	fullName: {
+	firstName: {
+		type: String,
+		index: true,
+		required: true,
+	},
+	lastName: {
 		type: String,
 		index: true,
 		required: true,
 	},
 	role: {
 		type: String,
+		enum: Object.values(userRole),
 		required: true,
 	},
 	email: {

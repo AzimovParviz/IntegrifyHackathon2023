@@ -28,6 +28,7 @@ export enum projectStatus {
 
 export enum userRole {
   ADMIN = "admin",
+  MANAGER = "manager",
   USER = "user",
 }
 
