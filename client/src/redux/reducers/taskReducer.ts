@@ -1,18 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError, AxiosResponse } from "axios";
-import { User } from "../../types/common";
+import { Task, User } from "../../types/common";
 import { axiosInstance } from "../shared/sharedInstance";
 import { TaskReducer } from "../../types/task";
 
 // Fetch all tasks from API
 export const fetchAllTasks = createAsyncThunk("fetchAllTasks", async () => {
 	try {
-		const res: AxiosResponse<User[] | Error, any> = await axiosInstance.get("tasks");
+		const res: AxiosResponse<Task[] | Error, any> = await axiosInstance.get("tasks");
 		if (!(res.data instanceof Error)) return res.data;
 	} catch (e) {
 		return;
 	}
 });
+
+// Fetch single
 
 const taskSlice = createSlice({
 	name: "taskSlice",
