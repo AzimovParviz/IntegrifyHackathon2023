@@ -50,5 +50,5 @@ export interface Comment {
 export interface Attachment extends Common {
     filepath: string,
     category: "image" | "audio" | "video" | "document" | "file",
-    attachedTo: number //Task.id
+    attachedTo: string //Task.id
 }
