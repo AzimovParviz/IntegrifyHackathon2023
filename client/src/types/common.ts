@@ -8,23 +8,23 @@ export interface Common {
 }
 
 export interface Category extends Common {
-    description: string,
-    tasks: Task[],
-    users: string[],
-    status: "active" | "inactive" | "disabled",
+    description?: string,
+    tasks?: Task[],
+    users?: string[],
+    status?: "active" | "inactive" | "disabled",
 }
 
 export interface User extends Common {
     username: string,
     email: string,
     role: Role,
-    team: string,
-    status: "active" | "inactive" | "disabled",
-    taskAsigned: string[],
+    team?: string,
+    status?: "active" | "inactive" | "disabled",
+    taskAsigned?: string[],
 }
 
 export interface Task extends Common {
-    color: string,
+    color?: string,
     description?: string,
     comments?: Comment[],
     attachments?: Attachment[],
@@ -34,12 +34,12 @@ export interface Task extends Common {
 }
 
 export interface Project extends Common {
-    category: Category[],
+    category?: Category[],
     status: "active" | "inactive" | "disabled",
 }
 
 export interface Role extends Common{
-    description: string
+    description?: string
 }
 
 export interface Comment {
