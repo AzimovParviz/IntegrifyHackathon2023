@@ -18,7 +18,10 @@ export const loginUser = createAsyncThunk("loginUser", async (credential: string
 export const signupUser = createAsyncThunk("signupUser", async (credential: string) => {
   try {
     const res: AxiosResponse<UserAuth | Error, any> = await axiosInstance.post("login/signup");
-    if (!(res.data instanceof Error)) return res.data;
+	  if (!(res.data instanceof Error)) {
+		  localStorage.setItem("token", res.data.token);
+		  return res.data;
+	  }
   } catch (e) {
     return;
   }
