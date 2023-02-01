@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -13,16 +14,18 @@ import {
   Typography
 } from "@mui/material/";
 import {
-  Menu,
+  Menu, RemoveCircleOutline,
 } from "@mui/icons-material";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import AddIcon from '@mui/icons-material/Add';
-// import Avatar from '@mui/material/Avatar';
-// import Tooltip from '@mui/material/Tooltip';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import AddIcon from "@mui/icons-material/Add";
+
 import SearchBar from "../searchbar/SearchBar";
 import AccountMenu from "./AccountMenu";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { deleteProject, fetchAllprojects } from "../../redux/reducers/projectReducer";
+import { CreateProject } from "./CreatePrject";
 
-const projectItems = [
+const projectItemsIcon = [
   {
     icon: <ContentCopyIcon />,
     name: "Project 1"
@@ -43,6 +46,14 @@ const projectItems = [
 
 export default function App() {
   const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const allProject = useAppSelector((state) => state.projectReducer.allProjects);
+  const [createProject, setCreateProject] = useState(false);
+  const [deleted, setDeleted] = useState(false)
+
+  useEffect(() => {
+    dispatch(fetchAllprojects());
+  }, [deleted]);
 
   const toggleSlider = () => {
     setOpen(!open);
@@ -55,17 +66,26 @@ export default function App() {
         </Typography>
       <Divider />
       <List>
-        {projectItems.map((projectItems, index) => (
+        {allProject && allProject.map((projectItems, index) => (
           <ListItem  button key={index}>
             <ListItemIcon sx={{opacity: "0.5"}}>
-              {projectItems.icon}
+              {projectItemsIcon[0].icon}
             </ListItemIcon>
             <ListItemText primary={projectItems.name} />
+            <IconButton aria-label="add">
+              <RemoveCircleOutline onClick={() => {
+                dispatch(deleteProject(projectItems._id.toString()))
+                setDeleted(true);
+              }}/>
+          </IconButton>
           </ListItem>
         ))}
       </List>
       <IconButton aria-label="add">
-        <AddIcon />
+        <AddIcon onClick={() => {
+          setOpen(false)
+          setCreateProject(true)
+        }}/>
       </IconButton>
     </Box>
   );
@@ -93,7 +113,7 @@ export default function App() {
                 {sideList()}
               </Drawer>
             </Toolbar>
-
+            {createProject && <CreateProject setCreateProject={setCreateProject} />}
           </Box>
         </AppBar>
   );

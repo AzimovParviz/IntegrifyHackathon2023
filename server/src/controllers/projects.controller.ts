@@ -59,7 +59,7 @@ export const deleteProject = async (
 ) => {
 	try {
 		await projectService.deleteProject(req.params.projectId);
-		res.status(204).end();
+		res.send({deleted: "ok"});
 	} catch (error) {
 		if (error instanceof Error && error.name == "ValidationError") {
 			next(new BadRequestError("Invalid Request", 400, error));

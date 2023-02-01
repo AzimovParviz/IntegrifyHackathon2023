@@ -5,9 +5,9 @@ import { Category } from "../../types/common";
 import { axiosInstance, rqHeader } from "../shared/sharedInstance";
 
 // Fetch all categories from API
-export const fetchAllCategories = createAsyncThunk("fetchAllCategories", async (token: string) => {
+export const fetchAllCategories = createAsyncThunk("fetchAllCategories", async () => {
   try {
-    const res: AxiosResponse<Category[] | Error, any> = await axiosInstance.get("categories/all", rqHeader(token));
+    const res: AxiosResponse<Category[] | Error, any> = await axiosInstance.get("categories/");
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
@@ -28,7 +28,7 @@ export const fetchSingleCategory = createAsyncThunk("fetchSingleCategory", async
 // Post a new category
 export const addCategory = createAsyncThunk("addCategory", async (params: { category: Category; token: string }) => {
   try {
-    const res: AxiosResponse<Category | Error, any> = await axiosInstance.post(`categories/`, rqHeader(params.token));
+    const res: AxiosResponse<Category | Error, any> = await axiosInstance.post("categories/", rqHeader(params.token));
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;

@@ -1,3 +1,5 @@
+import { projectStatus } from "../components/navbar/CreatePrject"
+
 export interface Common {
     id: string,
     creationDate?: Date,
@@ -6,6 +8,7 @@ export interface Common {
 }
 
 export interface Category extends Common {
+    _id: string,
     description: string,
     tasks: Task[],
     users: User[],
@@ -32,8 +35,10 @@ export interface Task extends Common {
 }
 
 export interface Project extends Common {
-    category: Category[],
-    status: "active" | "inactive" | "disabled",
+    _id: { id: string; token: string }
+    categories: Category[],
+    creatingDate: string,
+    status: projectStatus
 }
 
 export interface Role extends Common{

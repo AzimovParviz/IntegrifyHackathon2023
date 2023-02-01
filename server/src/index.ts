@@ -9,7 +9,6 @@ import projectsRouter from "./routers/projects.router";
 import tasksRouter from "./routers/tasks.router";
 import categoriesRouter from "./routers/category.router";
 import loginRouter from "./routers/login.router";
-import checkAuth from "./middlewares/checkAuth";
 
 dotenv.config();
 
@@ -28,12 +27,12 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 // Set up routers
-app.use("/api/v1/comments", checkAuth, commentsRouter);
-app.use("/api/v1/login", checkAuth, loginRouter);
-app.use("/api/v1/users", checkAuth, usersRouter);
-app.use("/api/v1/attachments", checkAuth, attacmentsRouter);
-app.use("/api/v1/projects", checkAuth, projectsRouter);
-app.use("/api/v1/tasks", checkAuth, tasksRouter);
-app.use("/api/v1/categories", checkAuth, categoriesRouter);
+app.use("/api/v1/comments", commentsRouter);
+app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/attachments", attacmentsRouter);
+app.use("/api/v1/projects", projectsRouter);
+app.use("/api/v1/tasks", tasksRouter);
+app.use("/api/v1/categories", categoriesRouter);
 
 export default app;

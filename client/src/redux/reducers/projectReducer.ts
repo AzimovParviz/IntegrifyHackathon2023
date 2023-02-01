@@ -10,14 +10,16 @@ export const fetchAllprojects = createAsyncThunk("fetchAllProjects", async () =>
     const res: AxiosResponse<Project[] | Error, any> = await axiosInstance.get("projects");
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
+    console.log(e);
+    
     return;
   }
 });
 
 // Fetch single project, use const project = await fetchSingleProject({id: id, token: token})
-export const fetchSingleProject = createAsyncThunk("fetchSingleProject", async (params: { id: string; token: string }) => {
+export const fetchSingleProject = createAsyncThunk("fetchSingleProject", async (params: { id: string }) => {
   try {
-    const res: AxiosResponse<Project | Error, any> = await axiosInstance.get(`projects/${params.id}`, rqHeader(params.token));
+    const res: AxiosResponse<Project | Error, any> = await axiosInstance.get(`projects/${params.id}`);
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
@@ -25,9 +27,9 @@ export const fetchSingleProject = createAsyncThunk("fetchSingleProject", async (
 });
 
 // Post a new project
-export const addProject = createAsyncThunk("addProject", async (params: { project: Project; token: string }) => {
+export const addProject = createAsyncThunk("addProject", async (params: { project: any }) => {
   try {
-    const res: AxiosResponse<Project | Error, any> = await axiosInstance.post(`projects/`, rqHeader(params.token));
+    const res: AxiosResponse<Project | Error, any> = await axiosInstance.post("projects/");
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
@@ -35,9 +37,9 @@ export const addProject = createAsyncThunk("addProject", async (params: { projec
 });
 
 // Delete project
-export const deleteProject = createAsyncThunk("deleteProject", async (params: { id: string; token: string }) => {
+export const deleteProject = createAsyncThunk("deleteProject", async (id: any ) => {
   try {
-    const res: AxiosResponse<Project | Error, any> = await axiosInstance.delete(`projects/${params.id}`, rqHeader(params.token));
+    const res: AxiosResponse<Project | Error, any> = await axiosInstance.delete(`projects/${id}`);
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
