@@ -1,38 +1,42 @@
-import errorHandler from 'errorhandler';
-import mongoose from 'mongoose'
+import errorHandler from "errorhandler";
+import mongoose from "mongoose";
 
-import app from './index';
-import { MONGODB_URI } from './utils/secrets';
-import logger from './utils/logger';
+import app from "./index";
+import { MONGODB_URI } from "./utils/secrets";
+import logger from "./utils/logger";
 
-const mongoUrl = MONGODB_URI
+const mongoUrl = MONGODB_URI;
+
+mongoose.set("strictQuery", true);
 
 mongoose
-  .connect(mongoUrl)
-  .then(() => {
-    logger.info('Connected to MongoDB')
-  })
-  .catch((err: Error) => {
-    console.log(
-      'MongoDB connection error. Please make sure MongoDB is running. ' + err
-    )
-    process.exit(1)
-  })
+	.connect(mongoUrl)
+	.then(() => {
+		logger.info("Connected to MongoDB");
+	})
+	.catch((err: Error) => {
+		console.log(
+			"MongoDB connection error. Please make sure MongoDB is running. " + err
+		);
+		process.exit(1);
+	});
+
 
 /**
  * Error Handler. Provides error handing middleware
    only use in development
  */
-if (process.env.NODE_ENV === 'development') {
-  app.use(errorHandler())
+if (process.env.NODE_ENV === "development") {
+	app.use(errorHandler());
 }
 
 // Start Express server
-app.listen(app.get('port'), () => {
-  console.log(
-    '  App is running at http://localhost:%d in %s mode',
-    app.get('port'),
-    app.get('env')
-  )
-  console.log('  Press CTRL-C to stop\n')
-})
+app.listen(app.get("port"), () => {
+	console.log(
+		"  App is running at http://localhost:%d in %s mode",
+		app.get("port"),
+		app.get("env")
+	);
+	console.log("  Press CTRL-C to stop\n");
+});
+

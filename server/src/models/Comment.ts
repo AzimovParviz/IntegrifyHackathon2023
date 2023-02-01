@@ -7,15 +7,16 @@ export type CommentDocument = Document & {
 };
 
 const commentSchema = new mongoose.Schema({
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    require: true,
-  },
-  task: {
-    type: mongoose.Schema.Types.ObjectId,
-    require: true,
-  },
-  content: String,
+	author: {
+		type: mongoose.Schema.Types.ObjectId,
+		require: true,
+	},
+	task: {
+		type: mongoose.Schema.Types.ObjectId,
+		require: true,
+	},
+	content: String,
+	
 });
 
 export default mongoose.model<CommentDocument>("Comment", commentSchema);

@@ -20,20 +20,29 @@ export enum attachmentCategory {
   File = "file",
 }
 
-type ParsedTokenPayload = {
-  email: string
+export enum projectStatus {
+  Active = "active",
+  Inactive = "inactive",
+  Bugfixing = "bugfixing",
+}
+
+export enum userRole {
+  ADMIN = "admin",
+  MANAGER = "manager",
+  USER = "user",
+}
+
+export interface ParsedToken {
+  payload: {
+    email: string
     email_verified: string
     name: string
     picture: string
     given_name: string
     family_name: string
     locale: string
+  }
 }
-
-export interface ParsedToken {
-  payload: ParsedTokenPayload
-}
-
 export interface VerifiedCallback {
   (error: any, user?: any, info?: any): void
 }

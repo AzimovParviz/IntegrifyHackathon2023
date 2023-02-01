@@ -1,6 +1,6 @@
 import mongoose, { Document } from "mongoose";
 import { taskStatus } from "../types";
-
+//TODO: add priority to tasks 
 export type TaskDocument = Document & {
   name: string;
   description: string;
@@ -13,36 +13,36 @@ export type TaskDocument = Document & {
 };
 
 const taskSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    require: true,
-  },
-  description: {
-    type: String,
-  },
-  comments: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "Comment",
-  },
-  attachments: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "Attachment",
-  },
-  usersAssigned: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "User",
-  },
-  status: {
-    type: String,
-    enum: Object.values(taskStatus),
-    require: true,
-  },
-  startingDate: {
-    type: Date,
-  },
-  dueDate: {
-    type: Date,
-  },
+	name: {
+		type: String,
+		require: true,
+	},
+	description: {
+		type: String,
+	},
+	comments: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "Comment",
+	},
+	attachments: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "Attachment",
+	},
+	usersAssigned: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "User",
+	},
+	status: {
+		type: String,
+		enum: Object.values(taskStatus),
+		require: true,
+	},
+	startingDate: {
+		type: Date,
+	},
+	dueDate: {
+		type: Date,
+	},
 });
 
 export default mongoose.model<TaskDocument>("Task", taskSchema);
