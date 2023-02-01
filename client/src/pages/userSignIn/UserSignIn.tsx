@@ -1,8 +1,10 @@
 
-import SignIn from '../signIn/SignIn';
+import SignIn from "../../components/signIn/SignIn";
 
-export const UserSignIn = () => {
+const UserSignIn = () => {
   return (
     <div><SignIn /></div>
   )
 }
+
+export default UserSignIn;
