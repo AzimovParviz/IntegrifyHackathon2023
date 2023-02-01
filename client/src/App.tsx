@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import NavBar from "./components/navbar/NavBar";
 import { createTheme, ThemeProvider } from "@mui/material";
 import CssBaseLine from '@mui/material/CssBaseline'
+import SignIn from "./components/login/login";
 
 export const App = () => {
 
@@ -12,6 +13,7 @@ export const App = () => {
 
 	return(
 		<ThemeProvider theme={theme}>
+			<SignIn />
 			<CssBaseLine />
 			<NavBar/>
 			<Home/>
