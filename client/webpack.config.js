@@ -9,18 +9,19 @@ const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
   entry: {
-    client: path.resolve(__dirname, ".", "client", "index.tsx")
+    client: path.resolve(__dirname, "src", "index.tsx")
   },
   mode: isDevelopment ? "development" : "production",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js"
   },
-  target: "",
+  target: 'web',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    watchFiles: ["./src/*"],
     client: {
       overlay: {
         errors: true,
@@ -31,7 +32,6 @@ module.exports = {
     hot: true,
     port: 9000,
   },
-  target: "web",
   devtool: isDevelopment ? "inline-source-map" : false,
   optimization: {
     minimizer: [new TerserJSPlugin(),  new CssMinimizerPlugin()],
@@ -65,7 +65,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./client/index.html"
+      template: path.resolve(__dirname, "public", "index.html")
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
