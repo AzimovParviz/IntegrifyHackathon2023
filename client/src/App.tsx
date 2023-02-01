@@ -1,5 +1,17 @@
-export const App = () => {
+import Home from "./pages/Home";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const App = () => {
+	const theme = createTheme({
+		palette: {mode: "dark"}
+	});
+
 	return(
-		<h1>Hello World</h1>
-	)
-}
+
+		<ThemeProvider theme={theme}>
+			<Home/>
+		</ThemeProvider>
+	);
+};
+
+export default App;
