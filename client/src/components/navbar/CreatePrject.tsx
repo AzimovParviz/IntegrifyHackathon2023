@@ -34,8 +34,8 @@ export const CreateProject = ({setCreateProject}: {setCreateProject: any}) => {
         <TextField
             onChange={(e) => setName(e.target.value)}
             id="outlined-helperText"
-            label="Prject name"
-            value={name}
+            label="Project name"
+            value={"AAAAAAAAAAAA"}
             defaultValue="Project "
         />
    
@@ -97,7 +97,7 @@ export const CreateProject = ({setCreateProject}: {setCreateProject: any}) => {
         onClick={() => {
             dispatch(addProject({
                 project: {
-                    name: name, categories: [projectCategory], creatingDate, status,
+			name: name, categories: [projectCategory], creatingDate, status,
                 }
             }))
             setCreateProject(false);
