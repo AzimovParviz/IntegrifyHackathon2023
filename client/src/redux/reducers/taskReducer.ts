@@ -5,9 +5,9 @@ import { axiosInstance, rqHeader } from "../shared/sharedInstance";
 import { TaskReducer } from "../../types/task";
 
 // Fetch all tasks from API
-export const fetchAllTasks = createAsyncThunk("fetchAllTasks", async (params: { id: string; token: string }) => {
+export const fetchAllTasks = createAsyncThunk("fetchAllTasks", async (token: string ) => {
   try {
-    const res: AxiosResponse<Task[] | Error, any> = await axiosInstance.get("tasks/all", rqHeader(params.token));
+    const res: AxiosResponse<Task[] | Error, any> = await axiosInstance.get("tasks/all", rqHeader(token));
     if (!(res.data instanceof Error)) return res.data;
   } catch (e) {
     return;
@@ -24,6 +24,7 @@ export const fetchSingleTask = createAsyncThunk("fetchSingleTask", async (params
   }
 });
 
+// dispatch(addTask({task: task, token: token}))
 // Post a new task
 export const addTask = createAsyncThunk("addTask", async (params: { task: Task; token: string }) => {
   try {
@@ -35,7 +36,7 @@ export const addTask = createAsyncThunk("addTask", async (params: { task: Task; 
 });
 
 // Delete task
-export const deleteTask = createAsyncThunk("delete", async (params: { id: string; token: string }) => {
+export const deleteTask = createAsyncThunk("deleteTask", async (params: { id: string; token: string }) => {
   try {
     const res: AxiosResponse<Task | Error, any> = await axiosInstance.delete(`tasks/${params.id}`, rqHeader(params.token));
     if (!(res.data instanceof Error)) return res.data;
@@ -45,7 +46,7 @@ export const deleteTask = createAsyncThunk("delete", async (params: { id: string
 });
 
 // PUT task
-export const updateTask = createAsyncThunk("delete", async (params: { id: string; token: string }) => {
+export const updateTask = createAsyncThunk("updateTask", async (params: { id: string; token: string }) => {
   try {
     const res: AxiosResponse<Task | Error, any> = await axiosInstance.delete(`tasks/${params.id}`, rqHeader(params.token));
     if (!(res.data instanceof Error)) return res.data;

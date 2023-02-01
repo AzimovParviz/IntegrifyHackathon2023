@@ -1,3 +1,4 @@
+export default
 {
 	"env": {
 		"browser": false,
